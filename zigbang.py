@@ -15,9 +15,9 @@ class SearchDatas:
     ============
     provides 
     1. get_geohash : save lat, lng, geohash data in SearchDatas class
-    2. zigbang_oneroom : crawling oneroom data
-    3. zigbang_apt : crawling apt data
-    4. zigbang_villa : zigbang_villa data
+    2. zigbang_oneroom : crawl and return  oneroom dataframe
+    3. zigbang_apt : crawl and return  apt dataframe
+    4. zigbang_villa : crawl and return zigbang_villa dataframe 
     
     '''
     
