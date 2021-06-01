@@ -1,26 +1,29 @@
-def kakao( REST_API_KEY, target, obj):
+import requests
+import pandas as pd
+
+
+def kakao(REST_API_KEY, obj):
 
     '''
     kakao(
     REST_API_KEY,
-    target, 
     obj
-    ), 
+    ),
 
     Docstring:
     USE KAKAO API CRAWLING DATA
-    retrun obj_dataframe 
-    
-    REST_API_KEY: kakao api key, 
-    target : zigbang df 
+    retrun obj_dataframe
+
+    REST_API_KEY: kakao api key,
+    target : zigbang df
     obj : category of data
           { "oneroom", "apartment", "villa"}
-    
+
     Examples
     --------
-    kakao(REST_API_KEY, zigbang_villa_df, 2)
+    kakao(REST_API_KEY, zigbang_villa_df)
     return kakao_villa_df
-    ''' 
+    '''
 
     headers = {"Authorization": f"KakaoAK {REST_API_KEY}",}
 
@@ -52,20 +55,5 @@ def kakao( REST_API_KEY, target, obj):
 
                 page += 1
 
-    if target == "oneroom":
-        kakao_oneroom_df = pd.concat(dfs_2).reset_index(drop=True)
-        return kakao_oneroom_df
-    
-    elif target == "apartment":
-        kakao_apt_df = pd.concat(dfs_2).reset_index(drop=True)
-        return kakao_apt_df
-    
-    elif target == "villa":
-        kakao_villa_df = pd.concat(dfs_2).reset_index(drop=True)
-        return kakao_villa_df
-    
-    else:
-        kakao_office_df = pd.concat(dfs_2).reset_index(drop=True)
-        return kakao_office_df
-
     print("end kakao crawling")
+    return pd.concat(dfs_2).reset_index(drop=True)
