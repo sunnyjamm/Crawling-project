@@ -12,12 +12,11 @@ def kakao(REST_API_KEY, obj):
 
     Docstring:
     USE KAKAO API CRAWLING DATA
-    retrun obj_dataframe
+    return kakao_api_dataframe
 
     REST_API_KEY: kakao api key,
-    target : zigbang df
-    obj : category of data
-          { "oneroom", "apartment", "villa"}
+    obj : category of zigbang_dataframe
+          {"oneroom", "apartment", "villa", "officetel"}
 
     Examples
     --------
