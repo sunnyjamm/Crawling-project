@@ -14,10 +14,11 @@ class SearchDatas:
     SearchDatas
     ============
     provides
-    1. get_geohash : save lat, lng, geohash data in SearchDatas class
-    2. zigbang_oneroom : crawl and return  oneroom dataframe
-    3. zigbang_apt : crawl and return  apt dataframe
-    4. zigbang_villa : crawl and return zigbang_villa dataframe
+    1. get_geohash : saves lat, lng, geohash data in SearchDatas class
+    2. zigbang_oneroom : crawling single room type housings and returns oneroom dataframe
+    3. zigbang_apt : crawling apartment types housings and returns aptartment dataframe
+    4. zigbang_villa : crawling villa type housings and returns zigbang_villa dataframe
+    5. zigbang_officetel: crawling officetel type housings and returns zigbang_officetel dataframe
 
     '''
 
@@ -37,13 +38,13 @@ class SearchDatas:
 
         Docstring:
         get lat, log data
-        self.lat, self.lng, self.geohast
+        self.lat, self.lng, self.geohash
 
 
         Parameters
         ----------
-        precision=5 default parameter and recommend not change
-        caus zigbang's geohash value coincide when precision=5
+        precision=5 default parameter and no changes are recommended
+        because zigbang's geohash value coincide when precision is not at 5
         '''
 
         url = f"https://apis.zigbang.com/search?q={self.query}"
@@ -61,9 +62,9 @@ class SearchDatas:
 
         Docstring:
         crawling zigbang oneroom data and
-        Return dataframe
+        Returning dataframe
 
-        dataframe
+        Dataframe
         ----------
         colums : "lat", "lng", "공급면적_m2", "공급면적_p", "전용면적_m2", "전용면적_p", "category"
         '''
@@ -110,9 +111,9 @@ class SearchDatas:
 
         Docstring:
         crawling zigbang apt data and
-        Return dataframe
+        Returning dataframe
 
-        dataframe
+        Dataframe
         ----------
         colums : "register", "online", "rent_min", "rent_max", "rent_avg", "sales_min", "sales_max",
         "sales_avg", "offer_min", "offer_max", "offer_avg", "m2", "p", "category"
@@ -160,10 +161,10 @@ class SearchDatas:
         self),
 
         Docstring:
-        crawling zigbang villa data and
-        Return dataframe
+        Crawling zigbang villa data and
+        Returning dataframe
 
-        dataframe
+        Dataframe
         ----------
         colums : "공급면적_m2", "공급면적_p", "전용면적_m2", "전용면적_p", "lat", "lng", "category",
 
@@ -206,10 +207,10 @@ class SearchDatas:
         self),
 
         Docstring:
-        crawling zigbang officetel data and
-        returning dataframe
+        Crawling zigbang officetel data and
+        Returning dataframe
 
-        dataframe
+        Dataframe
         ----------
         colums : "공급면적_m2", "공급면적_p", "전용면적_m2", "전용면적_p", "lat", "lng", "category",
 
