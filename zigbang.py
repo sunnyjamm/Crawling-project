@@ -93,7 +93,7 @@ class SearchDatas:
             df['전용면적_m2'] = df['전용면적'].apply(lambda x:x['m2'])
             df['전용면적_p'] = df['전용면적'].apply(lambda x:x['p'])
 
-            df.drop(columns=["random_location", "공급면적", "전용면적"], inplace=True)
+            df.drop(columns=["random_location", "공급면적", "전용면적", "계약면적"], inplace=True)
             df['category'] = "원룸"
             dfs.append(df)
 
@@ -192,9 +192,39 @@ class SearchDatas:
         df['lat'] = df['random_location'].apply(lambda x: x['lat'])
         df['lng'] = df['random_location'].apply(lambda x: x['lng'])
 
-        df.drop(columns=['공급면적', '전용면적', 'random_location'], inplace=True)
+        df.drop(columns=['공급면적', '전용면적', '계약면적', 'random_location'], inplace=True)
         df['category'] = "빌라"
 
         zigbang_villa_df = df
         print("end villa crawling")
         return zigbang_villa_df
+
+
+    def zigbang_officetel(self):
+        url = f"https://apis.zigbang.com/v2/officetels?buildings=true&domain=zigbang&geohash={self.geohash}"
+        response = requests.get(url)
+
+        ids = []
+        for data in response.json()['sections']:
+            ids += data['item_ids']
+
+        url_2 = "https://apis.zigbang.com/v2/items/list"
+        params = {"domain": "zigbang", "withCoalition": "false", "item_ids": ids}
+        response_2 = requests.post(url_2, params)
+
+        df = pd.DataFrame(response_2.json()['items'])
+
+        df['공급면적_m2'] = df['공급면적'].apply(lambda x: x['m2'])
+        df['공급면적_p'] = df['공급면적'].apply(lambda x: x['p'])
+        df['전용면적_m2'] = df['전용면적'].apply(lambda x: x['m2'])
+        df['전용면적_p'] = df['전용면적'].apply(lambda x: x['p'])
+
+        df['lat'] = df['random_location'].apply(lambda x: x['lat'])
+        df['lng'] = df['random_location'].apply(lambda x: x['lng'])
+
+        df.drop(columns=['공급면적', '전용면적', '계약면적', 'random_location'], inplace=True)
+        df['category'] = '오피스텔'
+        zigbang_officetel_df = df
+
+        print("end officetels crawling")
+        return zigbang_officetel_df
