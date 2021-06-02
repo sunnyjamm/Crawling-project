@@ -201,6 +201,22 @@ class SearchDatas:
 
 
     def zigbang_officetel(self):
+        '''
+        SearchData.zigbang_officetel(
+        self),
+
+        Docstring:
+        crawling zigbang officetel data and
+        returning dataframe
+
+        dataframe
+        ----------
+        colums : "공급면적_m2", "공급면적_p", "전용면적_m2", "전용면적_p", "lat", "lng", "category",
+
+        "m2" means "m^2"
+        "p" means "평"
+        "category" : "빌라"
+        '''
         url = f"https://apis.zigbang.com/v2/officetels?buildings=true&domain=zigbang&geohash={self.geohash}"
         response = requests.get(url)
 
