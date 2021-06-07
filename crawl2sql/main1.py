@@ -31,20 +31,22 @@ gwangjin = SearchDatas("서울시 광진구")
 # Dataframe to sql and insert
 
 zigbang_oneroom = gwangjin.zigbang_oneroom()
-oneroom = kakao(info['REST_API'], target= zigbang_oneroom)
-oneroom.to_sql(name='oneroom', con=engine, if_exists='replace', index=False)
+zigbang_oneroom = zigbang_oneroom.fillna(0)
+zigbang_oneroom  = zigbang_oneroom.drop(["tags","title"], 1)
+zigbang_oneroom.to_sql(name='zigbang_oneroom', con=engine, if_exists='replace', index=False)
 
 
 zigbang_villa = gwangjin.zigbang_villa()
-villa = kakao(info['REST_API'], target= zigbang_villa)
-villa.to_sql(name='villa', con=engine, if_exists='replace', index=False)
+zigbang_villa = zigbang_villa.fillna(0)
+zigbang_villa  = zigbang_villa.drop(["tags","title"], 1)
+zigbang_villa.to_sql(name='zigbang_villa', con=engine, if_exists='replace', index=False)
 
 
 zigbang_officetel = gwangjin.zigbang_officetel()
-officetel = kakao(info['REST_API'], target= zigbang_officetel)
-officetel.to_sql(name='officetel', con=engine, if_exists='replace', index=False)
-
+zigbang_officetel = zigbang_officetel.fillna(0)
+zigbang_officetel  = zigbang_officetel.drop(["tags","title"], 1)
+zigbang_officetel.to_sql(name='zigbang_officetel', con=engine, if_exists='replace', index=False)
 
 zigbang_apt = gwangjin.zigbang_apt()
-apt = kakao(info['REST_API'], target= zigbang_apt)
-apt.to_sql(name='apt', con=engine, if_exists='replace', index=False)
+zigbang_apt = zigbang_apt.fillna(0)
+zigbang_apt.to_sql(name='zigbang_officetel', con=engine, if_exists='replace', index=False)

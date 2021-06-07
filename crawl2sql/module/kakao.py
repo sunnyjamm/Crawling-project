@@ -30,7 +30,7 @@ def kakao(REST_API_KEY, target):
 
     page, size, radius = 1, 15, 200
     dfs_2 = []
-    target[cate_ls] = None
+
     for idx, loc in enumerate(target[['lat', 'lng']].values):
         print(idx, end=" ")
         lat, lng = loc
