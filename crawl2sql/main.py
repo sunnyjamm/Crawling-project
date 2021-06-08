@@ -19,7 +19,7 @@ print("import done")
 
 # Sql server connect
 
-engine = create_engine("mysql+mysqldb://root:fast@proxy73.rt3.io:33046/data", encoding='utf-8')
+engine = create_engine("mysql+mysqldb://root:fast@ipaddress/data", encoding='utf-8')
 conn = engine.connect()
 
 # Set Datas range
