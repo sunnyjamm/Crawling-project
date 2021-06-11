@@ -19,7 +19,7 @@ print("import done")
 
 # Sql server connect
 
-engine = create_engine("mysql+mysqldb://root:fast@ip_address/data", encoding='utf-8')
+engine = create_engine("mysql+mysqldb://root:fast@ipaddress/data", encoding='utf-8')
 conn = engine.connect()
 
 # Set Datas range
@@ -49,4 +49,4 @@ zigbang_officetel.to_sql(name='zigbang_officetel', con=engine, if_exists='replac
 
 zigbang_apt = gwangjin.zigbang_apt()
 zigbang_apt = zigbang_apt.fillna(0)
-zigbang_apt.to_sql(name='zigbang_officetel', con=engine, if_exists='replace', index=False)
+zigbang_apt.to_sql(name='zigbang_apt', con=engine, if_exists='replace', index=False)
